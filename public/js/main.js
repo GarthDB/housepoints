@@ -9,9 +9,6 @@ ws.onmessage = function (event) {
     Sizzle(houseSelector+' .housename')[0].innerHTML = houses[i].name;
     Sizzle(houseSelector+' .housepoints')[0].innerHTML = houses[i].points;
   }
-  // var li = document.createElement('li');
-  // li.innerHTML = JSON.parse(event.data);
-  // document.querySelector('#pings').appendChild(li);
 };
 ws.onopen = function (event) {
   var buttons = Sizzle('button')
