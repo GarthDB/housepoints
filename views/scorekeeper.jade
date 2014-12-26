@@ -1,0 +1,9 @@
+doctype html
+html
+  title House Points Scorekeeper
+  link(rel="stylesheet" type="text/css" href="/css/main.css")
+  body
+    each house in houses
+      h1=house.name
+      h3=house.points
+      button(type="button") Add Points
