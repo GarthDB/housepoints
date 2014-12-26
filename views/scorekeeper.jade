@@ -1,9 +1,13 @@
 doctype html
 html
   title House Points Scorekeeper
+  meta(name="viewport" content="width=device-width, initial-scale=1")
   link(rel="stylesheet" type="text/css" href="/css/main.css")
+  script(type="text/javascript" src="/js/sizzle.js")
+  script(type="text/javascript" src="/js/main.js")
   body
     each house in houses
-      h1=house.name
-      h3=house.points
-      button(type="button") Add Points
+      .house(data-house-id=house.id)
+        .housename=house.name
+        .housepoints=house.points
+        button(type="button" data-house=house.name) Add Points
