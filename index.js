@@ -56,8 +56,6 @@ console.log("http server listening on %d", port)
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
-var clients = [];
-
 wss.on("connection", function(ws) {
   console.log("websocket connection open")
   clients.push(ws);
@@ -68,8 +66,8 @@ wss.on("connection", function(ws) {
     for (var i = 0; i < houses.length; i++) {
       if(houses[i].name == message) {
         houses[i].points++;
-        for(var j = 0; j < clients.length; j ++){
-          clients[j].send(JSON.stringify([houses[i]]));
+        for(var j = 0; j < this.clients.length; j ++){
+          this.clients[j].send(JSON.stringify([houses[i]]));
         }
         break;
       }
