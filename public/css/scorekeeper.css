@@ -23,96 +23,94 @@ body {
   font-weight: 700;
   color: #0a0b0c;
 }
-.house {
-  position: absolute;
-  width: 50%;
-  height: 50%;
+.houses {
+  width: 100%;
+  height: 420px;
+  position: relative;
 }
-.house img {
-  height: 40%;
+.housename {
+  width: 100%;
+  height: 54px;
   position: absolute;
-  width: auto;
-  z-index: 1;
+  color: #fff;
 }
-.house .housename {
-  width: 58%;
-  text-align: center;
-  position: absolute;
-  font-size: 70px;
-  font-style: italic;
-  top: 42%;
-  z-index: 3;
-}
-.house .housepoints {
+.housepoints {
   position: absolute;
   background: #fff;
+  left: 10px;
+  right: 10px;
+}
+.house {
   width: 50%;
-  height: 14%;
+  height: 50%;
+  position: absolute;
+  text-align: center;
+}
+.house .houseimg {
+  margin-top: 10px;
+  height: 60%;
+  width: auto;
+}
+.house button {
+  height: 100%;
+  width: 100%;
+  position: absolute;
   z-index: 2;
-  font-size: 35px;
-  text-align: right;
-  padding: 0 20px;
-  vertical-align: middle;
+  opacity: 0;
+  left: 0;
+  top: 0;
 }
 .house:nth-child(1) {
   background: rgba(0,113,188,0.43);
   top: 0;
   left: 0;
 }
-.house:nth-child(1) img {
-  top: 20%;
-  left: 10%;
-}
 .house:nth-child(1) .housename {
-  right: 0;
+  bottom: 0;
+  background: #00f;
 }
 .house:nth-child(1) .housepoints {
-  border: 40px solid #00f;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
 }
 .house:nth-child(2) {
   background: rgba(255,255,0,0.43);
   top: 0;
   right: 0;
 }
-.house:nth-child(2) img {
-  top: 20%;
-  right: 10%;
+.house:nth-child(2) .housename {
+  bottom: 0;
+  background: #fdd503;
 }
 .house:nth-child(2) .housepoints {
-  border: 40px solid #fdd503;
-  bottom: 0;
-  left: 0;
+  bottom: 5px;
 }
 .house:nth-child(3) {
   background: rgba(255,0,0,0.43);
   bottom: 0;
   left: 0;
 }
-.house:nth-child(3) img {
-  bottom: 20%;
-  left: 10%;
-}
 .house:nth-child(3) .housename {
-  right: 0;
+  top: 0;
+  background: #e7130d;
 }
 .house:nth-child(3) .housepoints {
-  border: 40px solid #e7130d;
-  top: 0;
-  right: 0;
+  top: 24px;
+}
+.house:nth-child(3) .houseimg {
+  margin-top: 65px;
 }
 .house:nth-child(4) {
   background: rgba(0,104,55,0.43);
   bottom: 0;
   right: 0;
 }
-.house:nth-child(4) img {
-  bottom: 20%;
-  right: 10%;
+.house:nth-child(4) .housename {
+  top: 0;
+  background: #0f6c37;
 }
 .house:nth-child(4) .housepoints {
-  border: 40px solid #0f6c37;
-  top: 0;
-  left: 0;
+  top: 24px;
+}
+.house:nth-child(4) .houseimg {
+  margin-top: 65px;
 }

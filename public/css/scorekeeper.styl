@@ -1,0 +1,81 @@
+@import "opensans/stylesheet.styl"
+
+html, body
+  height 100%
+body
+  margin 0
+  padding 0
+  font-family 'opensans'
+  font-weight 700
+  color #0A0B0C
+.houses
+  width 100%
+  height 420px
+  position relative
+.housename
+  width 100%
+  height 54px
+  position absolute
+  color white
+.housepoints
+  position absolute
+  background white
+  left 10px
+  right 10px
+.house
+  width 50%
+  height 50%
+  position absolute
+  text-align center
+  .houseimg
+    margin-top 10px
+    height 60%
+    width auto
+  button
+    height 100%
+    width 100%
+    position absolute
+    z-index 2
+    opacity 0
+    left 0
+    top 0
+  &:nth-child(1)
+    background rgba(0,113,188,0.43)
+    top 0
+    left 0
+    .housename
+      bottom 0
+      background #0000FF
+    .housepoints
+      bottom 5px
+  &:nth-child(2)
+    background rgba(255,255,0,0.43)
+    top 0
+    right 0
+    .housename
+      bottom 0
+      background #FDD503
+    .housepoints
+      bottom 5px
+  &:nth-child(3)
+    background rgba(255,0,0,0.43)
+    bottom 0
+    left 0
+    .housename
+      top 0
+      background #E7130D
+    .housepoints
+      top 24px
+    .houseimg
+      margin-top 65px
+  &:nth-child(4)
+    background rgba(0,104,55,0.43)
+    bottom 0
+    right 0
+    .housename
+      top 0
+      background #0F6C37
+    .housepoints
+      top 24px
+    .houseimg
+      margin-top 65px
