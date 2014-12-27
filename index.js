@@ -1,4 +1,4 @@
-var WebSocketServer = require("ws").Server;
+var Primus = require("primus");
 var http = require("http");
 var express = require("express");
 var stylus = require("stylus");
@@ -53,22 +53,21 @@ server.listen(port)
 
 console.log("http server listening on %d", port);
 
-var wss = new WebSocketServer({server: server});
+var primus = new Primus(server, { parser: 'JSON' });
 console.log("websocket server created")
 
-wss.on("connection", function(ws) {
+primus.on('connection', function (spark) {
   console.log("websocket connection open");
-  clients.push(ws);
 
-  ws.send(JSON.stringify(houses));
+  spark.send('house', houses);
 
-  ws.on('message', function(message) {
+  spark.on('house', function(message) {
     for (var i = 0; i < houses.length; i++) {
       if(houses[i].name == message) {
         houses[i].points++;
-        for(var j = 0; j < wss.clients.length; j ++){
-          wss.clients[j].send(JSON.stringify([houses[i]]));
-        }
+        // for(var j = 0; j < wss.clients.length; j ++){
+        //   wss.clients[j].send(JSON.stringify([houses[i]]));
+        // }
         break;
       }
     }
