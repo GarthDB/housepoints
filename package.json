@@ -9,8 +9,9 @@
     "express": "^4.4.5",
     "http-auth": "^2.2.5",
     "jade": "^1.8.2",
-    "primus": "^2.4.12",
-    "stylus": "^0.49.3"
+    "primus.io": "^3.1.2",
+    "stylus": "^0.49.3",
+    "ws": "^0.6.3"
   },
   "engines": {
     "node": "0.10.x"

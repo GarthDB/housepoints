@@ -1,11 +1,85 @@
-body
-  font-family "Helvetica Neue", helvetica, arial
-  padding 15px
+@import "opensans/stylesheet.styl"
 
-ul
-  list-style none
+html, body
+  height 100%
+body
   margin 0
   padding 0
+  font-family 'opensans'
+  font-weight 700
+  color #0A0B0C
 
-ul li
-  line-height 1.4
+.house
+  position absolute
+  width 50%
+  height 50%
+  img
+    height 40%
+    position absolute
+    width auto
+    z-index 1
+  .housename
+    width 58%
+    text-align center
+    position absolute
+    font-size 70px
+    font-style italic
+    top 42%
+    z-index 3
+  .housepoints
+    position absolute
+    background #FFF
+    width 50%
+    height 9%
+    z-index 2
+    font-size 35px
+    text-align right
+    padding 0 20px
+  &:nth-child(1)
+    background rgba(0,113,188,0.43)
+    top 0
+    left 0
+    img
+      top 20%
+      left 10%
+    .housename
+      right 0
+    .housepoints
+      border 50px solid #0000ff
+      bottom 0
+      right 0
+  &:nth-child(2)
+    background rgba(255,255,0,0.43)
+    top 0
+    right 0
+    img
+      top 20%
+      right 10%
+    .housepoints
+      border 50px solid #fdd503
+      bottom 0
+      left 0
+  &:nth-child(3)
+    background rgba(255,0,0,0.43)
+    bottom 0
+    left 0
+    img
+      bottom 20%
+      left 10%
+    .housename
+      right 0
+    .housepoints
+      border 50px solid #e7130d
+      top 0
+      right 0
+  &:nth-child(4)
+    background rgba(0,104,55,0.43)
+    bottom 0
+    right 0
+    img
+      bottom 20%
+      right 10%
+    .housepoints
+      border 50px solid #0f6c37
+      top 0
+      left 0

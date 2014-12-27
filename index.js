@@ -1,4 +1,4 @@
-var Primus = require("primus");
+var Primus = require('primus.io');
 var http = require("http");
 var express = require("express");
 var stylus = require("stylus");
@@ -32,10 +32,10 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 var houses = [
-{id: 1, name: 'Team 1', points: 1},
-{id: 2, name: 'Team 2', points: 2},
-{id: 3, name: 'Team 3', points: 3},
-{id: 4, name: 'Team 4', points: 4}
+{id: 1, name: 'Sabio', points: 1},
+{id: 2, name: 'Creativo', points: 2},
+{id: 3, name: 'Valeroso', points: 3},
+{id: 4, name: 'Amable', points: 4}
 ];
 
 app.get('/', function(req, res){
@@ -53,7 +53,7 @@ server.listen(port)
 
 console.log("http server listening on %d", port);
 
-var primus = new Primus(server, { parser: 'JSON' });
+var primus = new Primus(server, { transformer: 'websockets', parser: 'JSON' });
 console.log("websocket server created")
 
 primus.on('connection', function (spark) {
@@ -65,9 +65,9 @@ primus.on('connection', function (spark) {
     for (var i = 0; i < houses.length; i++) {
       if(houses[i].name == message) {
         houses[i].points++;
-        // for(var j = 0; j < wss.clients.length; j ++){
-        //   wss.clients[j].send(JSON.stringify([houses[i]]));
-        // }
+        primus.forEach(function (spark, id, connections){
+          spark.send('house', [houses[i]]);
+        });
         break;
       }
     }
