@@ -8,6 +8,12 @@ socket.on('open', function () {
       socket.send('house', house);
       e.target.disabled = true;
     };
+    buttons[i].addEventListener("touchend", function(e){
+      var house = e.target.dataset.house;
+      socket.send('house', house);
+      e.target.disabled = true;
+      e.preventDefault();
+    }, false);
   }
   console.log('opened');
   socket.on('house', function(msg) {
