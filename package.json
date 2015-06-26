@@ -19,6 +19,7 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "start": "source ./local-env.sh && node index.js"
+    "start": "source ./local-env.sh && node index.js",
+    "start-production": "node index.js"
   }
 }
