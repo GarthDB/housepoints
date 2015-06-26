@@ -9,6 +9,9 @@ var auth = require('http-auth');
 var userid = process.env.userid || 'admin'; //TODO Setup basic auth
 var pass = process.env.password || '12345';
 
+var db = require('monk')('mongodb://'+process.env.mongo_username+':'+process.env.mongo_pass+'@ds043180.mongolab.com:43180/housepoints');
+var db_houses = db.get('houses');
+
 var basic = auth.basic({
     realm: "Simon Area."
   }, function (username, password, callback) { // Custom authentication method.
@@ -32,10 +35,10 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 var houses = [
-{id: 1, name: 'Sabio', points: 1},
-{id: 2, name: 'Creativo', points: 2},
-{id: 3, name: 'Valeroso', points: 3},
-{id: 4, name: 'Amable', points: 4}
+{id: 1, name: 'Sabio', points: 'loading'},
+{id: 2, name: 'Creativo', points: 'loading'},
+{id: 3, name: 'Valeroso', points: 'loading'},
+{id: 4, name: 'Amable', points: 'loading'}
 ];
 
 app.get('/', function(req, res){
@@ -59,14 +62,20 @@ console.log("websocket server created")
 primus.on('connection', function (spark) {
   console.log("websocket connection open");
 
-  spark.send('house', houses);
+  db_houses.find({}, {sort: {id: 1}}, function (err, docs) {
+    houses = docs;
+    spark.send('house', docs);
+  });
 
   spark.on('house', function(message) {
     for (var i = 0; i < houses.length; i++) {
       if(houses[i].name == message) {
-        houses[i].points++;
-        primus.forEach(function (spark, id, connections){
-          spark.send('house', [houses[i]]);
+        db_houses.findAndModify({ _id: houses[i]._id }, { $inc:{points:1} }).on('success', function (doc) {
+          houses[i] = doc;
+          houses[i].points++;
+          primus.forEach(function (spark, id, connections){
+            spark.send('house', [houses[i]]);
+          });
         });
         break;
       }
