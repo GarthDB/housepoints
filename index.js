@@ -9,7 +9,7 @@ var auth = require('http-auth');
 var userid = process.env.userid || 'admin'; //TODO Setup basic auth
 var pass = process.env.password || '12345';
 
-var db = require('monk')('mongodb://'+process.env.mongo_username+':'+process.env.mongo_pass+'@ds043180.mongolab.com:43180/housepoints');
+var db = require('monk')(process.env.mongolab_uri);
 var db_houses = db.get('houses');
 
 var basic = auth.basic({
