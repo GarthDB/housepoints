@@ -1,14 +1,12 @@
-doctype html
-html
-  title House Points Scoreboard
-  meta(name="viewport" content="width=device-width, initial-scale=1")
-  link(rel="stylesheet" type="text/css" href="/css/main.css")
-  script(type="text/javascript" src="/js/sizzle.js")
-  script(type="text/javascript" src="/js/primus.io.js")
+extends ./includes/default.jade
+
+block append head
   script(type="text/javascript" src="/js/main.js")
-  body
-    each house in houses
-      .house(data-house-id=house.id)
-        .housename=house.name
-        .housepoints=house.points
-        img.houseimg(src='/img/#{house.name.toLowerCase()}.svg')
+  link(rel="stylesheet" type="text/css" href="/css/main.css")
+
+block content
+  each house in houses
+    .house(data-house-id=house.id)
+      .housename=house.name
+      .housepoints=house.points
+      img.houseimg(src='/img/#{house.name.toLowerCase()}.svg')

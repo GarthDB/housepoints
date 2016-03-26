@@ -1,10 +1,11 @@
 {
-  "name": "node-ws-test",
+  "name": "housepoints",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku-examples/node-ws-test.git"
+    "url": "git@github.com:GarthDB/housepoints.git"
   },
+  "license": "Apache-2.0",
   "dependencies": {
     "express": "4.4.5",
     "http-auth": "2.2.5",

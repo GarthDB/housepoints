@@ -1,0 +1,15 @@
+extends ./includes/default.jade
+
+block append head
+  script(type="text/javascript" src="/js/edit.js")
+  link(rel="stylesheet" type="text/css" href="/css/editpoints.css")
+  
+
+block content
+  form#editPointsForm
+    each house in houses
+      div.formElement
+        label(for=house.name.toLowerCase())= house.name
+        input(id=house.name.toLowerCase(), type="number", data-house-id=house.id, data-house=house.name)
+    input#submit(type="submit", disabled, value="Change Points")
+  button#archivePoints Reset Points

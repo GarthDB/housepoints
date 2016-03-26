@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: sans-serif;
+  color: #0a0b0c;
+}
+.formElement {
+  margin-bottom: 5px;
+}
+form {
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+label {
+  display: inline-block;
+  min-width: 80px;
+}

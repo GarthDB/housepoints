@@ -1,3 +1,5 @@
 *.swp
 node_modules
 local-env.sh
+.env
+npm-debug.log

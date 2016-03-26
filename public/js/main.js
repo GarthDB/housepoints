@@ -15,7 +15,6 @@ socket.on('open', function () {
       e.preventDefault();
     }, false);
   }
-  console.log('opened');
   socket.on('house', function(msg) {
     var houses = msg;
     for (var i = 0; i < houses.length; i++) {

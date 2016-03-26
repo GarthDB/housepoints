@@ -1,20 +1,18 @@
-doctype html
-html
-  title House Points Scorekeeper
-  meta(name="viewport" content="width=device-width, user-scalable=no")
-  link(rel="stylesheet" type="text/css" href="/css/scorekeeper.css")
-  script(type="text/javascript" src="/js/sizzle.js")
-  script(type="text/javascript" src="/js/primus.io.js")
+extends ./includes/default.jade
+
+block append head
   script(type="text/javascript" src="/js/main.js")
+  link(rel="stylesheet" type="text/css" href="/css/scorekeeper.css")
   link(rel="apple-touch-icon" href="/img/touch-icon-iphone.png")
   link(rel="apple-touch-icon" sizes="76x76" href="/img/touch-icon-ipad.png")
   link(rel="apple-touch-icon" sizes="120x120" href="/img/touch-icon-iphone-retina.png")
   link(rel="apple-touch-icon" sizes="152x152" href="/img/touch-icon-ipad-retina.png")
-  body
-    .houses
-      each house in houses
-        .house(data-house-id=house.id)
-          img.houseimg(src='/img/#{house.name.toLowerCase()}.svg')
-          button(type="button" data-house=house.name disabled) Add Points
-          .housename=house.name
-          .housepoints=house.points
+
+block content
+  .houses
+    each house in houses
+      .house(data-house-id=house.id)
+        img.houseimg(src='/img/#{house.name.toLowerCase()}.svg')
+        button(type="button" data-house=house.name disabled) Add Points
+        .housename=house.name
+        .housepoints=house.points

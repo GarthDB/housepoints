@@ -49,6 +49,10 @@ app.get('/scorekeeper', authMiddleware, function(req, res){
   res.render('scorekeeper', {houses: houses});
 });
 
+app.get('/editpoints', authMiddleware, function(req, res){
+  res.render('editpoints', {houses: houses});
+});
+
 var server = http.createServer(app)
 server.listen(port)
 
@@ -81,5 +85,19 @@ primus.on('connection', function (spark) {
       }
     }
     console.log(houses);
+  });
+  spark.on('houses', function(message) {
+    var newHouses = message;
+    console.log(newHouses.length);
+    for (var i = 0; i < newHouses.length; i++) {
+      console.log(newHouses[i]);
+      db_houses.findAndModify({ id: newHouses[i].id }, { $set:{points:newHouses[i].points} }, {new: true}).on('success',
+      function (doc) {
+        houses[i] = doc;
+        primus.forEach(function (spark, id, connections){
+          spark.send('house', [houses[i]]);
+        });
+      });
+    }
   });
 })
